@@ -1,0 +1,283 @@
+--- flow-tools-0.67/lib/Makefile.am.orig	2003-07-28 22:25:30.000000000 +0200
++++ flow-tools-0.67/lib/Makefile.am	2004-05-08 21:49:34.239085364 +0200
+@@ -2,17 +2,17 @@
+ 
+ #AM_CFLAGS=-g -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs
+ #AM_CFLAGS=-O2
+-AM_CFLAGS=-g -Wall
++AM_CFLAGS=-Wall
+ 
+ DEFS=-I. -I$(srcdir)/lib
+ 
+ include_HEADERS = ftlib.h ftqueue.h radix.h ftpaths.h ftconfig.h
+-lib_LIBRARIES = libft.a
++lib_LTLIBRARIES = libft.la
+ 
+-libft_a_SOURCES = ftio.c ftswap.c ftencode.c ftdecode.c ftprof.c bit1024.c \
++libft_la_SOURCES = ftio.c ftswap.c ftencode.c ftdecode.c ftprof.c bit1024.c \
+  fmt.c support.c ftfile.c fttlv.c ftmap.c ftrec.c fterr.c \
+  ftchash.c ftsym.c radix.c fttag.c ftfil.c ftstat.c getdate.c ftxfield.c\
+  ftmask.c ftvar.c ftxlate.c
+ 
+-libft_a_LIBADD = @LIBOBJS@ 
++libft_la_LIBADD = @LTLIBOBJS@ 
+ 
+--- flow-tools-0.67/src/Makefile.am.orig	2003-12-04 06:42:33.000000000 +0100
++++ flow-tools-0.67/src/Makefile.am	2004-05-08 21:53:13.561470532 +0200
+@@ -7,7 +7,7 @@
+ 
+ #AM_CFLAGS=-g -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs
+ #AM_CFLAGS=-O2
+-AM_CFLAGS=-g -Wall
++AM_CFLAGS=-Wall
+ 
+ bin_PROGRAMS = flow-capture flow-cat flow-stat flow-print flow-dscan \
+         flow-send flow-receive flow-gen flow-expire \
+@@ -21,108 +21,87 @@
+ #	./ftbuild.sh
+ 
+ flow_mask_SOURCES = flow-mask.c ftbuild.h
+-flow_mask_LDFLAGS = -L../lib
+-flow_mask_LDADD =  -lft
++flow_mask_LDADD = ../lib/libft.la
+ flow_mask_DEPENDENCIES = ftbuild.h
+ 
+ flow_report_SOURCES = flow-report.c ftbuild.h
+-flow_report_LDFLAGS = -L../lib
+-flow_report_LDADD =  -lft
++flow_report_LDADD = ../lib/libft.la
+ flow_report_DEPENDENCIES = ftbuild.h
+ 
+ flow_nfilter_SOURCES = flow-nfilter.c ftbuild.h
+-flow_nfilter_LDFLAGS = -L../lib
+-flow_nfilter_LDADD =  -lft
++flow_nfilter_LDADD = ../lib/libft.la
+ flow_nfilter_DEPENDENCIES = ftbuild.h
+ 
+ flow_import_SOURCES = flow-import.c ftbuild.h
+-flow_import_LDFLAGS = -L../lib
+-flow_import_LDADD =  -lft
++flow_import_LDADD = ../lib/libft.la
+ flow_import_DEPENDENCIES = ftbuild.h
+ 
+ flow_merge_SOURCES = flow-merge.c
+-flow_merge_LDFLAGS = -L../lib
+-flow_merge_LDADD =  -lft
++flow_merge_LDADD = ../lib/libft.la
+ flow_merge_DEPENDENCIES = ftbuild.h
+ 
+ flow_capture_SOURCES = flow-capture.c
+-flow_capture_LDFLAGS = -L../lib
+-flow_capture_LDADD =  -lft
++flow_capture_LDADD = ../lib/libft.la $(LIBWRAP)
+ flow_capture_DEPENDENCIES = ftbuild.h
+ 
+ flow_cat_SOURCES = flow-cat.c
+-flow_cat_LDFLAGS = -L../lib
+-flow_cat_LDADD =  -lft
++flow_cat_LDADD = ../lib/libft.la
+ flow_cat_DEPENDENCIES = ftbuild.h
+ 
+ flow_stat_SOURCES = flow-stat.c
+-flow_stat_LDFLAGS = -L../lib
+-flow_stat_LDADD =  -lft
++flow_stat_LDADD = ../lib/libft.la
+ flow_stat_DEPENDENCIES = ftbuild.h
+ 
+ flow_print_SOURCES = flow-print.c
+-flow_print_LDFLAGS = -L../lib
+-flow_print_LDADD =  -lft
++flow_print_LDADD = ../lib/libft.la
+ flow_print_DEPENDENCIES = ftbuild.h
+ 
+ flow_dscan_SOURCES = flow-dscan.c
+-flow_dscan_LDFLAGS = -L../lib
+-flow_dscan_LDADD =  -lft
++flow_dscan_LDADD = ../lib/libft.la
+ flow_dscan_DEPENDENCIES = ftbuild.h
+ 
+ flow_fanout_SOURCES = flow-fanout.c
+-flow_fanout_LDFLAGS = -L../lib
+-flow_fanout_LDADD =  -lft
++flow_fanout_LDADD = ../lib/libft.la
+ flow_fanout_DEPENDENCIES = ftbuild.h
+ 
+ flow_send_SOURCES = flow-send.c
+-flow_send_LDFLAGS = -L../lib
+-flow_send_LDADD =  -lft
++flow_send_LDADD = ../lib/libft.la
+ flow_send_DEPENDENCIES = ftbuild.h
+ 
+ flow_receive_SOURCES = flow-receive.c
+-flow_receive_LDFLAGS = -L../lib
+-flow_receive_LDADD =  -lft
++flow_receive_LDADD = ../lib/libft.la
+ flow_receive_DEPENDENCIES = ftbuild.h
+ 
+ flow_gen_SOURCES = flow-gen.c
+-flow_gen_LDFLAGS = -L../lib
+-flow_gen_LDADD =  -lft
++flow_gen_LDADD = ../lib/libft.la
+ flow_gen_DEPENDENCIES = ftbuild.h
+ 
+ flow_expire_SOURCES = flow-expire.c
+-flow_expire_LDFLAGS = -L../lib
+-flow_expire_LDADD =  -lft
++flow_expire_LDADD = ../lib/libft.la
+ flow_expire_DEPENDENCIES = ftbuild.h
+ 
+ flow_filter_SOURCES = flow-filter.c aclyacc.y acllex.l acl2.c 
+-flow_filter_LDFLAGS = -L../lib
+-flow_filter_LDADD =  -lft @LEXLIB@ @YLIB@
++flow_filter_LDADD = ../lib/libft.la @LEXLIB@ @YLIB@
+ flow_filter_DEPENDENCIES = ftbuild.h
+ 
+ flow_export_SOURCES = flow-export.c
+-flow_export_LDFLAGS = -L../lib
+ flow_export_CFLAGS = @MYSQLCFLAGS@ @PGSQLCFLAGS@
+-flow_export_LDADD =  -lft @MYSQLLIB@ @PGSQLLIB@
++flow_export_LDADD =  ../lib/libft.la @MYSQLLIB@ @PGSQLLIB@
+ flow_export_DEPENDENCIES = ftbuild.h
+ 
+ flow_header_SOURCES = flow-header.c
+-flow_header_LDFLAGS = -L../lib
+-flow_header_LDADD =  -lft
++flow_header_LDADD = ../lib/libft.la
+ flow_header_DEPENDENCIES = ftbuild.h
+ 
+ flow_split_SOURCES = flow-split.c
+-flow_split_LDFLAGS = -L../lib
+-flow_split_LDADD =  -lft
++flow_split_LDADD = ../lib/libft.la
+ flow_split_DEPENDENCIES = ftbuild.h
+ 
+ flow_xlate_SOURCES = flow-xlate.c
+-flow_xlate_LDFLAGS = -L../lib
+-flow_xlate_LDADD =  -lft
++flow_xlate_LDADD = ../lib/libft.la
+ flow_xlate_DEPENDENCIES = ftbuild.h
+ 
+ flow_tag_SOURCES = flow-tag.c
+-flow_tag_LDFLAGS = -L../lib
+-flow_tag_LDADD =  -lft
++flow_tag_LDADD = ../lib/libft.la
+ flow_tag_DEPENDENCIES = ftbuild.h
+ 
+--- flow-tools-0.67/configure.in.orig	2003-12-04 07:18:15.000000000 +0100
++++ flow-tools-0.67/configure.in	2004-05-08 21:54:57.247598155 +0200
+@@ -6,7 +6,7 @@
+ AM_INIT_AUTOMAKE(flow-tools, 0.67)
+ AM_CONFIG_HEADER(lib/ftconfig.h:lib/ftconfig.h.in) 
+ 
+-CFLAGS="-g -Wall"
++CFLAGS="$CFLAGS -Wall"
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+@@ -14,7 +14,7 @@
+ AC_PROG_MAKE_SET
+ AC_PROG_YACC
+ YACC="$YACC -d"
+-AC_PROG_RANLIB
++AC_PROG_LIBTOOL
+ AM_PROG_LEX
+ 
+ AC_SUBST(YLIB)
+@@ -82,7 +82,12 @@
+    AC_MSG_ERROR(Link with "-lz" (zlib >= 1.0.2) failed!)
+    ;;
+ esac
+-AC_CHECK_LIB(wrap,allow_severity)
++LIBWRAP=""
++AC_CHECK_LIB(wrap,allow_severity,[
++	AC_DEFINE([HAVE_LIBWRAP],,[have libwrap])
++	LIBWRAP="-lwrap"
++])
++AC_SUBST(LIBWRAP)
+ 
+ dnl Checks for header files.
+ AC_HEADER_DIRENT
+@@ -114,8 +119,8 @@
+ AC_FUNC_MMAP
+ AC_FUNC_ALLOCA
+ AC_TYPE_SIGNAL
+-AC_CHECK_LIB(nsl,gethostbyname)
+-AC_CHECK_LIB(socket,socket)
++AC_SEARCH_LIBS(gethostbyname,nsl)
++AC_SEARCH_LIBS(socket,socket)
+ AC_CHECK_FUNCS(gethostname gettimeofday select socket strdup strtoul)
+ AC_CHECK_FUNCS(timelocal)
+ AC_CHECK_FUNCS(sigaction)
+--- flow-tools-0.67/src/flow-print.c.orig	2003-04-02 20:03:02.000000000 +0200
++++ flow-tools-0.67/src/flow-print.c	2004-05-08 22:15:17.825792214 +0200
+@@ -90,6 +90,8 @@
+ 
+ void usage(void);
+ 
++int debug;
++
+ int main(argc, argv)
+ int argc;
+ char **argv;
+@@ -97,7 +99,7 @@
+   struct ftio ftio;
+   struct ftprof ftp;
+   int i, format_index, set_format, ret;
+-  int print_header, options, debug;
++  int print_header, options;
+   char cc; /* comment character */
+ 
+   /* init fterr */
+--- flow-tools-0.67/src/flow-export.c.orig	2003-12-04 06:55:31.000000000 +0100
++++ flow-tools-0.67/src/flow-export.c	2004-05-08 22:16:01.125405034 +0200
+@@ -115,13 +115,14 @@
+ struct jump format[] = {{format0}, {format1}, {format2}, {format3},
+                         {format4}, {format5}};
+ 
++int debug;
++
+ int main(int argc, char **argv)
+ {
+   int i, format_index, ret, ascii_mask;
+   struct ftio ftio;
+   struct ftprof ftp;
+   struct options opt;
+-  int debug;
+ 
+   /* init fterr */
+   fterr_setid(argv[0]);
+--- flow-tools-0.67/src/flow-header.c.orig	2003-04-02 20:03:02.000000000 +0200
++++ flow-tools-0.67/src/flow-header.c	2004-05-08 22:16:30.110451757 +0200
+@@ -35,11 +35,13 @@
+ 
+ void usage(void);
+ 
++int debug;
++
+ int main(int argc, char **argv)
+ {
+   struct ftio ftio;
+   char cc; /* comment character */
+-  int i, debug;
++  int i;
+ 
+   /* init fterr */
+   fterr_setid(argv[0]);
+--- flow-tools-0.67/src/flow-import.c.orig	2003-11-11 17:53:57.000000000 +0100
++++ flow-tools-0.67/src/flow-import.c	2004-05-08 22:16:54.946493773 +0200
+@@ -110,13 +110,14 @@
+   #define strtoull strtoul
+ #endif /* HAVE_LL_STRTOULL */
+ 
++int debug;
++
+ int main(int argc, char **argv)
+ {
+   struct ftio ftio;
+   struct options opt;
+   int i, n, format_index, ret;
+   unsigned int v1, v2;
+-  int debug;
+ 
+   /* init fterr */
+   fterr_setid(argv[0]);
