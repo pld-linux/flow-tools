@@ -1,12 +1,12 @@
 Summary:	Collecting and processing NetFlow data
 Summary(pl):	Gromadzenie i przetwarzanie informacji o przep³ywie w sieci
 Name:		flow-tools
-Version:	0.66
+Version:	0.67
 Release:	1
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.eng.oar.net/pub/flow-tools/%{name}-%{version}.tar.gz
-# Source0-md5:	a32f02be71b29f0d4fe65c0d196d0093
+# Source0-md5:	0ee0a2830effa554d1925236aad6b4fe
 URL:		http://www.splintered.net/sw/flow-tools/
 BuildRequires:	bison
 BuildRequires:	flex
