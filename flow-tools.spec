@@ -1,4 +1,5 @@
-Summary:	collecting and processing NetFlow data
+Summary:	Collecting and processing NetFlow data
+Summary(pl):	Gromadzenie i przetwarzanie informacji o przep³ywie w sieci
 Name:		flow-tools
 Version:	0.66
 Release:	1
@@ -7,22 +8,33 @@ Group:		Applications/Networking
 Source0:	ftp://ftp.eng.oar.net/pub/flow-tools/%{name}-%{version}.tar.gz
 # Source0-md5:	a32f02be71b29f0d4fe65c0d196d0093
 URL:		http://www.splintered.net/sw/flow-tools/
-BuildRequires:	flex
 BuildRequires:	bison
+BuildRequires:	flex
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_localstatedir	%{_sysconfdir}/%{name}
 
 %description
-A software package for collecting and processing NetFlow data from Cisco and Juniper routers.
+This is a software package for collecting and processing NetFlow data
+from Cisco and Juniper routers.
+
+%description -l pl
+Jest to oprogramowanie s³u¿±ce do gromadzenia i przetwarzania
+informacji o przep³ywie w sieci (NetFlow) z routerów Cisco i Juniper.
 
 %package devel
-Summary:        Header files and develpment documentation for flow-tools
-Group:          Development/Libraries
-#Requires:       %{name} = %{version}
+Summary:	Header files and develpment documentation for flow-tools
+Summary(pl):	Pliki nag³ówkowe i dokumentacja programisty do flow-tools
+Group:		Development/Libraries
+#Requires:	%{name} = %{version}
 
 %description devel
-Header files and develpment documentation for flow-tools.
+This package contains Header files and develpment documentation for
+flow-tools.
+
+%description devel -l pl
+Ten pakiet zawiera pliki nag³ówkowe i dokumentacjê programisty do
+flow-tools.
 
 %prep
 %setup -q
