@@ -19,7 +19,7 @@ A software package for collecting and processing NetFlow data from Cisco and Jun
 %package devel
 Summary:        Header files and develpment documentation for flow-tools
 Group:          Development/Libraries
-Requires:       %{name} = %{version}
+#Requires:       %{name} = %{version}
 
 %description devel
 Header files and develpment documentation for flow-tools.
