@@ -68,7 +68,7 @@
  
  flow_capture_SOURCES = flow-capture.c
 -flow_capture_LDFLAGS = -L../lib
--flow_capture_LDADD =  -lft
+-flow_capture_LDADD =  -lft @CRYPTOLIB@
 +flow_capture_LDADD = ../lib/libft.la $(LIBWRAP)
  flow_capture_DEPENDENCIES = ftbuild.h
  
@@ -153,7 +153,7 @@
  
  flow_xlate_SOURCES = flow-xlate.c
 -flow_xlate_LDFLAGS = -L../lib
--flow_xlate_LDADD =  -lft
+-flow_xlate_LDADD =  -lft @CRYPTOLIB@
 +flow_xlate_LDADD = ../lib/libft.la
  flow_xlate_DEPENDENCIES = ftbuild.h
  
@@ -228,24 +228,6 @@
    char cc; /* comment character */
  
    /* init fterr */
---- flow-tools-0.67/src/flow-export.c.orig	2003-12-04 06:55:31.000000000 +0100
-+++ flow-tools-0.67/src/flow-export.c	2004-05-08 22:16:01.125405034 +0200
-@@ -115,13 +115,14 @@
- struct jump format[] = {{format0}, {format1}, {format2}, {format3},
-                         {format4}, {format5}};
- 
-+int debug;
-+
- int main(int argc, char **argv)
- {
-   int i, format_index, ret, ascii_mask;
-   struct ftio ftio;
-   struct ftprof ftp;
-   struct options opt;
--  int debug;
- 
-   /* init fterr */
-   fterr_setid(argv[0]);
 --- flow-tools-0.67/src/flow-header.c.orig	2003-04-02 20:03:02.000000000 +0200
 +++ flow-tools-0.67/src/flow-header.c	2004-05-08 22:16:30.110451757 +0200
 @@ -35,11 +35,13 @@
