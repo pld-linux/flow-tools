@@ -2,7 +2,7 @@ Summary:	Collecting and processing NetFlow data
 Summary(pl):	Gromadzenie i przetwarzanie informacji o przep³ywie w sieci
 Name:		flow-tools
 Version:	0.68
-Release:	1
+Release:	2
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.eng.oar.net/pub/flow-tools/%{name}-%{version}.tar.gz
