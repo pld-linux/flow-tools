@@ -2,7 +2,7 @@ Summary:	Collecting and processing NetFlow data
 Summary(pl):	Gromadzenie i przetwarzanie informacji o przep³ywie w sieci
 Name:		flow-tools
 Version:	0.68
-Release:	2
+Release:	3
 License:	BSD
 Group:		Applications/Networking
 Source0:	ftp://ftp.eng.oar.net/pub/flow-tools/%{name}-%{version}.tar.gz
@@ -12,6 +12,7 @@ URL:		http://www.splintered.net/sw/flow-tools/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
+BuildRequires:	sed >= 4.0
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	libwrap-devel >= 7.6-32
@@ -69,6 +70,8 @@ Statyczna biblioteka flow-tools.
 %prep
 %setup -q
 %patch0 -p1
+
+%{__sed} -i -e '1s,#.*bin/python,#!%{__python},' bin/flow-log2rrd bin/flow-rpt2rrd bin/flow-rptfmt
 
 %build
 %{__libtoolize}
