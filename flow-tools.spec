@@ -1,5 +1,5 @@
 Summary:	Collecting and processing NetFlow data
-Summary(pl.UTF-8):   Gromadzenie i przetwarzanie informacji o przepływie w sieci
+Summary(pl.UTF-8):	Gromadzenie i przetwarzanie informacji o przepływie w sieci
 Name:		flow-tools
 Version:	0.68
 Release:	3
@@ -32,7 +32,7 @@ informacji o przepływie w sieci (NetFlow) z routerów Cisco i Juniper.
 
 %package libs
 Summary:	flow-tools library
-Summary(pl.UTF-8):   Biblioteka flow-tools
+Summary(pl.UTF-8):	Biblioteka flow-tools
 Group:		Libraries
 Conflicts:	flow-tools < 0.67-2
 
@@ -44,7 +44,7 @@ Biblioteka flow-tools.
 
 %package devel
 Summary:	Header files flow-tools library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki flow-tools
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki flow-tools
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	zlib-devel
@@ -57,7 +57,7 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki flow-tools.
 
 %package static
 Summary:	Static flow-tools library
-Summary(pl.UTF-8):   Statyczna biblioteka flow-tools
+Summary(pl.UTF-8):	Statyczna biblioteka flow-tools
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
