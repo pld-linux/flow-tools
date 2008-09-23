@@ -16,6 +16,7 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	libwrap-devel >= 7.6-32
+BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
