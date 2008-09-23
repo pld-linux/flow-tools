@@ -8,14 +8,15 @@ Group:		Applications/Networking
 Source0:	ftp://ftp.eng.oar.net/pub/flow-tools/%{name}-%{version}.tar.gz
 # Source0-md5:	c9e0a8b53c79611b6bffcb9d510a5a38
 Patch0:		%{name}-shared.patch
+Patch1:		%{name}-gcc4.patch
 URL:		http://www.splintered.net/sw/flow-tools/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
-BuildRequires:	sed >= 4.0
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	libwrap-devel >= 7.6-32
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -70,6 +71,7 @@ Statyczna biblioteka flow-tools.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p0
 
 %{__sed} -i -e '1s,#.*bin/python,#!%{__python},' bin/flow-log2rrd bin/flow-rpt2rrd bin/flow-rptfmt
 
@@ -98,12 +100,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog INSTALL NEWS README SECURITY TODO
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/flow-*
+%{_mandir}/man1/flow-*.1*
 
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libft.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libft.so.0
 %{_localstatedir}
 
 %files devel
