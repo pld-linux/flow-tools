@@ -1,28 +1,26 @@
 Summary:	Collecting and processing NetFlow data
 Summary(pl.UTF-8):	Gromadzenie i przetwarzanie informacji o przepływie w sieci
 Name:		flow-tools
-Version:	0.68
-Release:	3
+Version:	0.68.5
+Release:	1
 License:	BSD
 Group:		Applications/Networking
-Source0:	ftp://ftp.eng.oar.net/pub/flow-tools/%{name}-%{version}.tar.gz
-# Source0-md5:	c9e0a8b53c79611b6bffcb9d510a5a38
-Patch0:		%{name}-shared.patch
-Patch1:		%{name}-gcc4.patch
-URL:		http://www.splintered.net/sw/flow-tools/
+Source0:	http://flow-tools.googlecode.com/files/%{name}-%{version}.tar.bz2
+# Source0-md5:	3c5e75da2822ab6b4947c928c09ea365
+URL:		http://code.google.com/p/flow-tools/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	libwrap-devel >= 7.6-32
+BuildRequires:	mysql-devel
+BuildRequires:	openssl-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_localstatedir	%{_sysconfdir}/%{name}
 
 %description
 This is a software package for collecting and processing NetFlow data
@@ -71,8 +69,6 @@ Statyczna biblioteka flow-tools.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p0
 
 %{__sed} -i -e '1s,#.*bin/python,#!%{__python},' bin/flow-log2rrd bin/flow-rpt2rrd bin/flow-rptfmt
 
@@ -82,8 +78,10 @@ Statyczna biblioteka flow-tools.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
-#	--with-mysql
+%configure \
+	--sysconfdir=%{_sysconfdir}/%{name} \
+	--with-mysql \
+	--with-openssl
 %{__make}
 
 %install
@@ -100,15 +98,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog INSTALL NEWS README SECURITY TODO
+%doc AUTHORS ChangeLog ChangeLog.old INSTALL README README.fork SECURITY TODO
 %attr(755,root,root) %{_bindir}/flow-*
+%attr(755,root,root) %{_datadir}/%{name}
 %{_mandir}/man1/flow-*.1*
 
 %files libs
 %defattr(644,root,root,755)
+%{_sysconfdir}/%{name}
 %attr(755,root,root) %{_libdir}/libft.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libft.so.0
-%{_localstatedir}
 
 %files devel
 %defattr(644,root,root,755)
