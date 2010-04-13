@@ -1,0 +1,63 @@
+diff -Naur flow-tools-0.68.5.orig/bin/flow-log2rrd flow-tools-0.68.5/bin/flow-log2rrd
+--- flow-tools-0.68.5.orig/bin/flow-log2rrd	2010-04-13 13:00:35.000000000 +0200
++++ flow-tools-0.68.5/bin/flow-log2rrd	2010-04-13 13:05:03.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#!/usr/bin/python
+ 
+ import getopt
+ import os
+diff -Naur flow-tools-0.68.5.orig/bin/flow-rpt2rrd flow-tools-0.68.5/bin/flow-rpt2rrd
+--- flow-tools-0.68.5.orig/bin/flow-rpt2rrd	2010-04-13 13:00:35.000000000 +0200
++++ flow-tools-0.68.5/bin/flow-rpt2rrd	2010-04-13 13:04:51.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#!/usr/bin/python
+ 
+ import getopt
+ import os
+diff -Naur flow-tools-0.68.5.orig/bin/flow-rptfmt flow-tools-0.68.5/bin/flow-rptfmt
+--- flow-tools-0.68.5.orig/bin/flow-rptfmt	2010-04-13 13:00:35.000000000 +0200
++++ flow-tools-0.68.5/bin/flow-rptfmt	2010-04-13 13:04:39.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env python
++#!/usr/bin/python
+ 
+ import sys
+ import string
+diff -Naur flow-tools-0.68.5.orig/utils/asn2c flow-tools-0.68.5/utils/asn2c
+--- flow-tools-0.68.5.orig/utils/asn2c	2007-10-21 23:10:58.000000000 +0200
++++ flow-tools-0.68.5/utils/asn2c	2010-04-13 13:05:31.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ # converts internic netinfo/asn.txt to C code
+diff -Naur flow-tools-0.68.5.orig/utils/gasn flow-tools-0.68.5/utils/gasn
+--- flow-tools-0.68.5.orig/utils/gasn	2007-10-21 23:10:58.000000000 +0200
++++ flow-tools-0.68.5/utils/gasn	2010-04-13 13:05:20.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ # converts internic netinfo/asn.txt to flow-tools <value> <name> format
+diff -Naur flow-tools-0.68.5.orig/utils/gprot flow-tools-0.68.5/utils/gprot
+--- flow-tools-0.68.5.orig/utils/gprot	2007-10-21 23:10:58.000000000 +0200
++++ flow-tools-0.68.5/utils/gprot	2010-04-13 13:05:40.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ # convert unix /etc/{protocols} format to flow-tools
+diff -Naur flow-tools-0.68.5.orig/utils/gserv flow-tools-0.68.5/utils/gserv
+--- flow-tools-0.68.5.orig/utils/gserv	2007-10-21 23:10:58.000000000 +0200
++++ flow-tools-0.68.5/utils/gserv	2010-04-13 13:05:48.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/bin/env perl
++#!/usr/bin/perl
+ 
+ #
+ # convert unix /etc/services format to flow-tools
