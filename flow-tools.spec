@@ -18,7 +18,6 @@ BuildRequires:	libwrap-devel >= 7.6-32
 BuildRequires:	mysql-devel
 BuildRequires:	openssl-devel
 BuildRequires:	rpm-pythonprov
-BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
