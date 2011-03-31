@@ -2,7 +2,7 @@ Summary:	Collecting and processing NetFlow data
 Summary(pl.UTF-8):	Gromadzenie i przetwarzanie informacji o przepływie w sieci
 Name:		flow-tools
 Version:	0.68.5
-Release:	3
+Release:	4
 License:	BSD
 Group:		Applications/Networking
 Source0:	http://flow-tools.googlecode.com/files/%{name}-%{version}.tar.bz2
