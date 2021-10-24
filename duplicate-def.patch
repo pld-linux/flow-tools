@@ -1,0 +1,10 @@
+--- flow-tools-0.68.5/src/acl2.c~	2008-01-27 21:48:55.000000000 +0100
++++ flow-tools-0.68.5/src/acl2.c	2021-10-24 21:08:47.954287421 +0200
+@@ -46,7 +46,6 @@
+ 
+ #include "acl2.h"
+ 
+-struct acl_list acl_list;
+ 
+ #define E acl_list.acl_ip_ext[index]
+ 

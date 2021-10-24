@@ -2,7 +2,7 @@ Summary:	Collecting and processing NetFlow data
 Summary(pl.UTF-8):	Gromadzenie i przetwarzanie informacji o przepływie w sieci
 Name:		flow-tools
 Version:	0.68.5
-Release:	7
+Release:	8
 License:	BSD
 Group:		Applications/Networking
 Source0:	http://flow-tools.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -10,6 +10,7 @@ Source0:	http://flow-tools.googlecode.com/files/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-shebang.patch
 Patch1:		format-security.patch
 Patch2:		openssl.patch
+Patch3:		duplicate-def.patch
 URL:		http://code.google.com/p/flow-tools/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -74,6 +75,12 @@ Statyczna biblioteka flow-tools.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+
+%{__sed} -E -i -e '1s,#!\s*/usr/bin/python(\s|$),#!%{__python}\1,' \
+      bin/flow-log2rrd \
+      bin/flow-rpt2rrd \
+      bin/flow-rptfmt
 
 %build
 %{__libtoolize}
